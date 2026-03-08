@@ -22,6 +22,7 @@ const Index = () => {
       <HeroSection />
       <CategoriesSection />
       <LatestIssueSection />
+      <NewsletterSection />
 
       {/* Footer */}
       <footer id="about" className="dark py-12 bg-surface-dark text-muted-foreground scroll-mt-16">
