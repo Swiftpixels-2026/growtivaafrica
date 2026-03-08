@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import LatestIssueSection from "@/components/LatestIssueSection";
+import NewsletterSection from "@/components/NewsletterSection";
 
 const Index = () => {
   return (
