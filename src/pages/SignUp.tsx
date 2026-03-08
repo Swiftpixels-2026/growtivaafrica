@@ -43,7 +43,7 @@ const SignUp = () => {
             </div>
             <h2 className="text-3xl font-bold font-display">You're In!</h2>
             <p className="text-muted-foreground">
-              Welcome to the Drive Africa community. Get ready for stories that move Africa forward.
+              Welcome to the Growtiva Africa community. Get ready for stories that move Africa forward.
             </p>
             <Button variant="gold" onClick={() => navigate("/")} className="px-8">
               Back to Home
