@@ -16,6 +16,7 @@ const Index = () => {
             <a href="#stories" className="hover:text-foreground transition-colors">Stories</a>
             <a href="/advertise" className="hover:text-foreground transition-colors">Advertise</a>
             <a href="#about" className="hover:text-foreground transition-colors">About</a>
+            <a href="#latest-issue" className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
           </div>
         </div>
       </nav>
