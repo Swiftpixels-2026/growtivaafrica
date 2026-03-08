@@ -18,7 +18,7 @@ const SignUp = () => {
       return;
     }
     setSubmitted(true);
-    toast.success("Welcome to Drive Africa!");
+    toast.success("Welcome to Growtiva Africa!");
   };
 
   return (
@@ -29,7 +29,7 @@ const SignUp = () => {
           <button onClick={() => navigate("/")} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="font-display font-bold text-lg tracking-tight">
-              DRIVE <span className="text-gold">AFRICA</span>
+              GROWTIVA <span className="text-gold">AFRICA</span>
             </span>
           </button>
         </div>
@@ -43,7 +43,7 @@ const SignUp = () => {
             </div>
             <h2 className="text-3xl font-bold font-display">You're In!</h2>
             <p className="text-muted-foreground">
-              Welcome to the Drive Africa community. Get ready for stories that move Africa forward.
+              Welcome to the Growtiva Africa community. Get ready for stories that move Africa forward.
             </p>
             <Button variant="gold" onClick={() => navigate("/")} className="px-8">
               Back to Home
@@ -53,7 +53,7 @@ const SignUp = () => {
           <div className="w-full max-w-md space-y-8 animate-fade-up">
             <div className="text-center space-y-2">
               <h1 className="text-3xl md:text-4xl font-bold font-display">
-                Join Drive <span className="text-gold">Africa</span>
+                Join Growtiva <span className="text-gold">Africa</span>
               </h1>
               <p className="text-muted-foreground">
                 Get access to stories, insights, and opportunities shaping modern African life.

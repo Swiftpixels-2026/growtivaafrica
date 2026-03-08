@@ -14,7 +14,7 @@ const HeroSection = () => {
               <div className="absolute -inset-10 bg-accent/10 rounded-full blur-3xl" />
               <img
                 src={magazineMockup}
-                alt="Drive Africa Magazine Cover"
+                alt="Growtiva Africa Magazine Cover"
                 className="relative w-72 md:w-96 animate-float drop-shadow-2xl"
               />
             </div>
@@ -24,7 +24,7 @@ const HeroSection = () => {
           <div className="order-1 lg:order-2 space-y-6">
             <div className="space-y-2">
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                Drive <span className="text-gold">Africa</span>
+                Growtiva <span className="text-gold">Africa</span>
               </h1>
               <p className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg">
                 A Digital Lifestyle &amp; Business Community Magazine Powered by Storytelling and Advertising.
@@ -35,7 +35,7 @@ const HeroSection = () => {
             </div>
 
             <p className="text-base text-muted-foreground leading-relaxed max-w-lg">
-              Drive Africa is a modern African media platform spotlighting ambition, opportunity, culture, and growth. We tell stories that inspire action and connect ambitious Africans with ideas, businesses, and opportunities that move them forward.
+              Growtiva Africa is a modern African media platform spotlighting ambition, opportunity, culture, and growth. We tell stories that inspire action and connect ambitious Africans with ideas, businesses, and opportunities that move them forward.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">

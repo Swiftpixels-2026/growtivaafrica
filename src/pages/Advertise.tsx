@@ -38,7 +38,7 @@ const Advertise = () => {
           <button onClick={() => navigate("/")} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="font-display font-bold text-lg tracking-tight">
-              DRIVE <span className="text-gold">AFRICA</span>
+              GROWTIVA <span className="text-gold">AFRICA</span>
             </span>
           </button>
         </div>
@@ -52,7 +52,7 @@ const Advertise = () => {
             </div>
             <h2 className="text-3xl font-bold font-display">Inquiry Received!</h2>
             <p className="text-muted-foreground">
-              Thank you for your interest in advertising with Drive Africa. Our team will get back to you shortly.
+              Thank you for your interest in advertising with Growtiva Africa. Our team will get back to you shortly.
             </p>
             <Button variant="gold" onClick={() => navigate("/")} className="px-8">
               Back to Home
@@ -62,7 +62,7 @@ const Advertise = () => {
           <div className="w-full max-w-lg space-y-8 animate-fade-up">
             <div className="text-center space-y-2">
               <h1 className="text-3xl md:text-4xl font-bold font-display">
-                Advertise with Drive <span className="text-gold">Africa</span>
+                Advertise with Growtiva <span className="text-gold">Africa</span>
               </h1>
               <p className="text-muted-foreground">
                 Put your brand in front of ambitious Africans. Fill in your details and we'll be in touch.
