@@ -48,7 +48,7 @@ const Index = () => {
               {navLinks.map((l) => (
                 <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">{l.label}</a>
               ))}
-              <a href="#latest-issue" onClick={() => setMobileOpen(false)} className="inline-flex w-fit px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
+              <a href="/issue" onClick={() => setMobileOpen(false)} className="inline-flex w-fit px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
             </div>
           </div>
         )}
