@@ -1,7 +1,9 @@
 import magazineMockup from "@/assets/magazine-mockup.png";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
   return (
     <section className="min-h-screen flex items-center bg-background overflow-hidden">
       <div className="container">
@@ -37,7 +39,7 @@ const HeroSection = () => {
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <Button variant="gold" size="lg" className="text-base px-8">
+              <Button variant="gold" size="lg" className="text-base px-8" onClick={() => navigate("/signup")}>
                 Sign Up Free
               </Button>
               <Button variant="gold-outline" size="lg" className="text-base px-8">
