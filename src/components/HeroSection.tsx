@@ -42,7 +42,7 @@ const HeroSection = () => {
               <Button variant="gold" size="lg" className="text-base px-8" onClick={() => navigate("/signup")}>
                 Sign Up Free
               </Button>
-              <Button variant="gold-outline" size="lg" className="text-base px-8">
+              <Button variant="gold-outline" size="lg" className="text-base px-8" onClick={() => navigate("/advertise")}>
                 Advertise Your Business
               </Button>
             </div>
