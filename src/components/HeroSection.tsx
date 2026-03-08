@@ -14,7 +14,7 @@ const HeroSection = () => {
               <div className="absolute -inset-10 bg-accent/10 rounded-full blur-3xl" />
               <img
                 src={magazineMockup}
-                alt="Drive Africa Magazine Cover"
+                alt="Growtiva Africa Magazine Cover"
                 className="relative w-72 md:w-96 animate-float drop-shadow-2xl"
               />
             </div>
