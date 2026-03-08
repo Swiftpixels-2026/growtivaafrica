@@ -1,6 +1,7 @@
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import LatestIssueSection from "@/components/LatestIssueSection";
+import NewsletterSection from "@/components/NewsletterSection";
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
       <HeroSection />
       <CategoriesSection />
       <LatestIssueSection />
+      <NewsletterSection />
 
       {/* Footer */}
       <footer id="about" className="dark py-12 bg-surface-dark text-muted-foreground scroll-mt-16">
