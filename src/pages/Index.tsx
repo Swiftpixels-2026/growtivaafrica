@@ -30,6 +30,7 @@ const Index = () => {
               <a key={l.href} href={l.href} className="hover:text-foreground transition-colors">{l.label}</a>
             ))}
             <a href="/issue" className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
+            <ThemeToggle />
           </div>
 
           {/* Mobile toggle */}
