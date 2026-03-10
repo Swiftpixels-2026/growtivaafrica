@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -25,13 +26,14 @@ const SignUp = () => {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <nav className="border-b border-border bg-background/80 backdrop-blur-md">
-        <div className="container flex items-center h-16">
+        <div className="container flex items-center justify-between h-16">
           <button onClick={() => navigate("/")} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" />
             <span className="font-display font-bold text-lg tracking-tight">
               GROWTIVA <span className="text-gold">AFRICA</span>
             </span>
           </button>
+          <ThemeToggle />
         </div>
       </nav>
 
