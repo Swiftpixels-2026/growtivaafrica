@@ -68,9 +68,12 @@ const Contact = () => {
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
-          <span className="font-display font-bold text-sm tracking-tight">
-            GROWTIVA <span className="text-gold">AFRICA</span>
-          </span>
+          <div className="flex items-center gap-2">
+            <span className="font-display font-bold text-sm tracking-tight">
+              GROWTIVA <span className="text-gold">AFRICA</span>
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
