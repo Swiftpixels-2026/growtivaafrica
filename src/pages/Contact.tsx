@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ArrowLeft, Send, Mail, MessageSquare } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
