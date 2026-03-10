@@ -4,6 +4,7 @@ import ThemeToggle from "@/components/ThemeToggle";
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import LatestIssueSection from "@/components/LatestIssueSection";
+import StatsSection from "@/components/StatsSection";
 import NewsletterSection from "@/components/NewsletterSection";
 
 const navLinks = [
@@ -62,6 +63,7 @@ const Index = () => {
       <HeroSection />
       <CategoriesSection />
       <LatestIssueSection />
+      <StatsSection />
       <NewsletterSection />
 
       {/* Footer */}
