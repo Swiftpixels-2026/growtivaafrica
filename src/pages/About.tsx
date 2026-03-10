@@ -1,4 +1,5 @@
 import { ArrowLeft, Target, Eye, Sparkles } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 
