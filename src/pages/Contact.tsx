@@ -5,55 +5,21 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useToast } from "@/hooks/use-toast";
-import { z } from "zod";
-
-const contactSchema = z.object({
-  name: z.string().trim().min(1, "Name is required").max(100, "Name must be under 100 characters"),
-  email: z.string().trim().email("Please enter a valid email").max(255, "Email must be under 255 characters"),
-  subject: z.string().trim().min(1, "Subject is required").max(200, "Subject must be under 200 characters"),
-  message: z.string().trim().min(1, "Message is required").max(2000, "Message must be under 2000 characters"),
-});
-
-type ContactForm = z.infer<typeof contactSchema>;
+import { toast } from "sonner";
 
 const Contact = () => {
-  const { toast } = useToast();
-  const [form, setForm] = useState<ContactForm>({ name: "", email: "", subject: "", message: "" });
-  const [errors, setErrors] = useState<Partial<Record<keyof ContactForm, string>>>({});
   const [submitting, setSubmitting] = useState(false);
 
-  const handleChange = (field: keyof ContactForm, value: string) => {
-    setForm((prev) => ({ ...prev, [field]: value }));
-    if (errors[field]) setErrors((prev) => ({ ...prev, [field]: undefined }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const result = contactSchema.safeParse(form);
-
-    if (!result.success) {
-      const fieldErrors: Partial<Record<keyof ContactForm, string>> = {};
-      result.error.errors.forEach((err) => {
-        const field = err.path[0] as keyof ContactForm;
-        if (!fieldErrors[field]) fieldErrors[field] = err.message;
-      });
-      setErrors(fieldErrors);
-      return;
-    }
-
     setSubmitting(true);
-    // Simulate submission delay
-    await new Promise((r) => setTimeout(r, 1200));
+    
+    // Simulate submission
+    await new Promise((r) => setTimeout(r, 1000));
+    
+    toast.success("Message sent! We'll get back to you soon.");
+    (e.target as HTMLFormElement).reset();
     setSubmitting(false);
-
-    toast({
-      title: "Message sent!",
-      description: "We'll get back to you as soon as possible.",
-    });
-
-    setForm({ name: "", email: "", subject: "", message: "" });
-    setErrors({});
   };
 
   return (
@@ -128,27 +94,23 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="md:col-span-3 space-y-5">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
-                  <label htmlFor="name" className="text-sm font-medium">Name</label>
+                  <label htmlFor="full_name" className="text-sm font-medium">Name</label>
                   <Input
-                    id="name"
+                    id="full_name"
+                    name="full_name"
                     placeholder="Your name"
-                    value={form.name}
-                    onChange={(e) => handleChange("name", e.target.value)}
-                    className={errors.name ? "border-destructive" : ""}
+                    required
                   />
-                  {errors.name && <p className="text-xs text-destructive">{errors.name}</p>}
                 </div>
                 <div className="space-y-1.5">
                   <label htmlFor="email" className="text-sm font-medium">Email</label>
                   <Input
                     id="email"
+                    name="email"
                     type="email"
                     placeholder="you@example.com"
-                    value={form.email}
-                    onChange={(e) => handleChange("email", e.target.value)}
-                    className={errors.email ? "border-destructive" : ""}
+                    required
                   />
-                  {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
                 </div>
               </div>
 
@@ -156,25 +118,21 @@ const Contact = () => {
                 <label htmlFor="subject" className="text-sm font-medium">Subject</label>
                 <Input
                   id="subject"
+                  name="subject"
                   placeholder="What's this about?"
-                  value={form.subject}
-                  onChange={(e) => handleChange("subject", e.target.value)}
-                  className={errors.subject ? "border-destructive" : ""}
+                  required
                 />
-                {errors.subject && <p className="text-xs text-destructive">{errors.subject}</p>}
               </div>
 
               <div className="space-y-1.5">
                 <label htmlFor="message" className="text-sm font-medium">Message</label>
                 <Textarea
                   id="message"
+                  name="message"
                   placeholder="Tell us what's on your mind..."
                   rows={6}
-                  value={form.message}
-                  onChange={(e) => handleChange("message", e.target.value)}
-                  className={errors.message ? "border-destructive" : ""}
+                  required
                 />
-                {errors.message && <p className="text-xs text-destructive">{errors.message}</p>}
               </div>
 
               <Button type="submit" disabled={submitting} className="h-12 px-8 font-semibold gap-2">

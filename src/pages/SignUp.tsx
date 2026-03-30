@@ -1,26 +1,16 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useFormHandlers } from "@/hooks/use-form-handlers";
 
 const SignUp = () => {
   const navigate = useNavigate();
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.password) {
-      toast.error("Please fill in all fields");
-      return;
-    }
-    setSubmitted(true);
-    toast.success("Welcome to Growtiva Africa!");
-  };
+  const { handleSignUpSubmit, forms } = useFormHandlers();
+  const submitted = forms.signup.success;
+  const isSubmitting = forms.signup.loading;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -62,39 +52,39 @@ const SignUp = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSignUpSubmit} className="space-y-5">
               <div className="space-y-2">
-                <Label htmlFor="name">Full Name</Label>
+                <Label htmlFor="full_name">Full Name</Label>
                 <Input
-                  id="name"
+                  id="full_name"
+                  name="full_name"
                   placeholder="Amara Okafor"
-                  value={form.name}
-                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  required
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="email">Email</Label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
                   placeholder="amara@example.com"
-                  value={form.email}
-                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  required
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="password">Password</Label>
                 <Input
                   id="password"
+                  name="password"
                   type="password"
                   placeholder="••••••••"
-                  value={form.password}
-                  onChange={(e) => setForm({ ...form, password: e.target.value })}
+                  required
                 />
               </div>
 
-              <Button type="submit" variant="gold" size="lg" className="w-full text-base">
-                Create Free Account
+              <Button type="submit" variant="gold" size="lg" className="w-full text-base" disabled={isSubmitting}>
+                {isSubmitting ? "Creating Account..." : "Create Free Account"}
               </Button>
             </form>
 

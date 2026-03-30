@@ -5,32 +5,15 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
+import { useFormHandlers } from "@/hooks/use-form-handlers";
 
 const Advertise = () => {
   const navigate = useNavigate();
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    business: "",
-    adType: "",
-    budget: "",
-    hardCopy: "",
-    message: "",
-  });
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name || !form.email || !form.business || !form.adType || !form.budget || !form.hardCopy) {
-      toast.error("Please fill in all required fields");
-      return;
-    }
-    setSubmitted(true);
-    toast.success("Inquiry submitted successfully!");
-  };
+  const { handleAdvertSubmit, forms } = useFormHandlers();
+  const submitted = forms.advert.success;
+  const isSubmitting = forms.advert.loading;
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -71,26 +54,26 @@ const Advertise = () => {
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleAdvertSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="name">Full Name *</Label>
-                  <Input id="name" placeholder="Amara Okafor" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                  <Label htmlFor="full_name">Full Name *</Label>
+                  <Input id="full_name" name="full_name" placeholder="Amara Okafor" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email *</Label>
-                  <Input id="email" type="email" placeholder="amara@example.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                  <Input id="email" name="email" type="email" placeholder="amara@example.com" required />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="business">Business / Brand Name *</Label>
-                <Input id="business" placeholder="Your business name" value={form.business} onChange={(e) => setForm({ ...form, business: e.target.value })} />
+                <Label htmlFor="business_name">Business / Brand Name *</Label>
+                <Input id="business_name" name="business_name" placeholder="Your business name" required />
               </div>
 
               <div className="space-y-2">
                 <Label>What do you want to advertise? *</Label>
-                <Select value={form.adType} onValueChange={(val) => setForm({ ...form, adType: val })}>
+                <Select name="ad_type" required>
                   <SelectTrigger>
                     <SelectValue placeholder="Select ad type" />
                   </SelectTrigger>
@@ -108,7 +91,7 @@ const Advertise = () => {
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label>Budget *</Label>
-                  <Select value={form.budget} onValueChange={(val) => setForm({ ...form, budget: val })}>
+                  <Select name="budget" required>
                     <SelectTrigger>
                       <SelectValue placeholder="Select budget" />
                     </SelectTrigger>
@@ -120,7 +103,7 @@ const Advertise = () => {
                 </div>
                 <div className="space-y-2">
                   <Label>Want a hard copy? *</Label>
-                  <Select value={form.hardCopy} onValueChange={(val) => setForm({ ...form, hardCopy: val })}>
+                  <Select name="want_hard_copy" required>
                     <SelectTrigger>
                       <SelectValue placeholder="Select" />
                     </SelectTrigger>
@@ -133,12 +116,12 @@ const Advertise = () => {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Additional Details (optional)</Label>
-                <Textarea id="message" placeholder="Tell us more about what you'd like to advertise..." value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={3} />
+                <Label htmlFor="additional_details">Additional Details (optional)</Label>
+                <Textarea id="additional_details" name="additional_details" placeholder="Tell us more about what you'd like to advertise..." rows={3} />
               </div>
 
-              <Button type="submit" variant="gold" size="lg" className="w-full text-base">
-                Submit Inquiry
+              <Button type="submit" variant="gold" size="lg" className="w-full text-base" disabled={isSubmitting}>
+                {isSubmitting ? "Submitting..." : "Submit Inquiry"}
               </Button>
             </form>
           </div>

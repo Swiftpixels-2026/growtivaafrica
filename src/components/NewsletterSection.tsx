@@ -3,31 +3,12 @@ import { Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useScrollAnimate } from "@/hooks/use-scroll-animate";
-import { useToast } from "@/hooks/use-toast";
+import { useFormHandlers } from "@/hooks/use-form-handlers";
 
 const NewsletterSection = () => {
-  const [email, setEmail] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { handleNewsletterSubmit, forms } = useFormHandlers();
   const { ref, isVisible } = useScrollAnimate(0.15);
-  const { toast } = useToast();
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const trimmed = email.trim();
-    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      toast({ title: "Please enter a valid email address", variant: "destructive" });
-      return;
-    }
-
-    setIsSubmitting(true);
-    // Simulate submission
-    setTimeout(() => {
-      toast({ title: "You're on the list! 🎉", description: "We'll notify you when the next issue drops." });
-      setEmail("");
-      setIsSubmitting(false);
-    }, 800);
-  };
+  const isSubmitting = forms.newsletter.loading;
 
   return (
     <section className="py-24 bg-primary text-primary-foreground">
@@ -42,12 +23,11 @@ const NewsletterSection = () => {
           Join thousands of ambitious Africans getting stories on money, growth, identity & more — straight to your inbox.
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+        <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
           <Input
             type="email"
+            name="email"
             placeholder="your@email.com"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
             maxLength={255}
             className="bg-primary-foreground/10 border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/40 focus-visible:ring-primary-foreground/50 h-12"
             required
