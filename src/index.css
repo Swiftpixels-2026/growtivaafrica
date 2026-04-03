@@ -40,6 +40,7 @@
     --gold-dark: 43 96% 46%;
     --surface-dark: 0 0% 5%;
     --surface-light: 40 20% 97%;
+    --footer-bg: 0 0% 5%;
 
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -68,9 +69,12 @@
     --accent-foreground: 0 0% 5%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
     --ring: 48 100% 55%;
+    --surface-dark: 0 0% 3%;
+    --surface-light: 0 0% 8%;
+    --footer-bg: 0 0% 3%;
     --sidebar-background: 0 0% 8%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 48 100% 55%;
@@ -105,6 +109,9 @@
   }
   .bg-surface-dark {
     background-color: hsl(var(--surface-dark));
+  }
+  .bg-footer-bg {
+    background-color: hsl(var(--footer-bg));
   }
   .bg-surface-light {
     background-color: hsl(var(--surface-light));
