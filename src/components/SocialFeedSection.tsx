@@ -4,9 +4,6 @@ import { useScrollAnimate } from "@/hooks/use-scroll-animate";
 import socialPost1 from "@/assets/social-post-1.jpg";
 import socialPost2 from "@/assets/social-post-2.jpg";
 import socialPost3 from "@/assets/social-post-3.jpg";
-import socialPost4 from "@/assets/social-post-4.jpg";
-import socialPost5 from "@/assets/social-post-5.jpg";
-import socialPost6 from "@/assets/social-post-6.jpg";
 
 const posts = [
   {
