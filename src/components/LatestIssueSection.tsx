@@ -6,18 +6,47 @@ import { useScrollAnimate } from "@/hooks/use-scroll-animate";
 import spread1 from "@/assets/issue-spread-1.jpg";
 import spread2 from "@/assets/issue-spread-2.jpg";
 import spread3 from "@/assets/issue-spread-3.jpg";
+import { Link } from "react-router-dom";
 
 const spreads = [spread1, spread2, spread3];
 
 const tocItems = [
   { page: "04", title: "Editor's Note", subtitle: "A letter from the team" },
-  { page: "08", title: "Money & Side Hustles", subtitle: "How young Africans are building wealth from scratch" },
-  { page: "16", title: "The Japa Diaries", subtitle: "Real relocation stories — the wins, the losses, the truth" },
-  { page: "24", title: "Brand Spotlight", subtitle: "Inside 3 African startups changing the game" },
-  { page: "32", title: "Identity", subtitle: "What it means to be African in a globalized world" },
-  { page: "40", title: "Growth & Career", subtitle: "Strategies that actually work for ambitious professionals" },
-  { page: "48", title: "Relationships", subtitle: "Modern love, friendships, and navigating connections" },
-  { page: "54", title: "Survival Guide", subtitle: "Navigating everyday challenges with resilience" },
+  {
+    page: "08",
+    title: "Money & Side Hustles",
+    subtitle: "How young Africans are building wealth from scratch",
+  },
+  {
+    page: "16",
+    title: "The Japa Diaries",
+    subtitle: "Real relocation stories — the wins, the losses, the truth",
+  },
+  {
+    page: "24",
+    title: "Brand Spotlight",
+    subtitle: "Inside 3 African startups changing the game",
+  },
+  {
+    page: "32",
+    title: "Identity",
+    subtitle: "What it means to be African in a globalized world",
+  },
+  {
+    page: "40",
+    title: "Growth & Career",
+    subtitle: "Strategies that actually work for ambitious professionals",
+  },
+  {
+    page: "48",
+    title: "Relationships",
+    subtitle: "Modern love, friendships, and navigating connections",
+  },
+  {
+    page: "54",
+    title: "Survival Guide",
+    subtitle: "Navigating everyday challenges with resilience",
+  },
 ];
 
 const LatestIssueSection = () => {
@@ -25,8 +54,10 @@ const LatestIssueSection = () => {
   const { ref: headingRef, isVisible: headingVisible } = useScrollAnimate(0.15);
   const { ref: contentRef, isVisible: contentVisible } = useScrollAnimate(0.1);
 
-  const prev = () => setCurrentSpread((s) => (s === 0 ? spreads.length - 1 : s - 1));
-  const next = () => setCurrentSpread((s) => (s === spreads.length - 1 ? 0 : s + 1));
+  const prev = () =>
+    setCurrentSpread((s) => (s === 0 ? spreads.length - 1 : s - 1));
+  const next = () =>
+    setCurrentSpread((s) => (s === spreads.length - 1 ? 0 : s + 1));
 
   return (
     <section id="latest-issue" className="py-24 bg-background scroll-mt-20">
@@ -39,12 +70,15 @@ const LatestIssueSection = () => {
             <BookOpen className="w-4 h-4" />
             <span>Issue #01 — Premier Edition</span>
           </div>
-          <p className="text-sm font-medium text-muted-foreground">Coming May 1st, 2026</p>
+          <p className="text-sm font-medium text-muted-foreground">
+            Coming May 1st, 2026
+          </p>
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             Peek Inside the <span className="text-gold">Latest Issue</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Explore what's waiting for you in the debut issue of Growtiva Africa.
+            Explore what's waiting for you in the debut issue of Growtiva
+            Africa.
           </p>
         </div>
 
@@ -64,7 +98,12 @@ const LatestIssueSection = () => {
             </div>
 
             <div className="flex items-center justify-between">
-              <Button variant="outline" size="icon" onClick={prev} className="rounded-full">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={prev}
+                className="rounded-full"
+              >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
               <div className="flex gap-2">
@@ -73,19 +112,31 @@ const LatestIssueSection = () => {
                     key={i}
                     onClick={() => setCurrentSpread(i)}
                     className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      i === currentSpread ? "bg-gold scale-125" : "bg-muted-foreground/30"
+                      i === currentSpread
+                        ? "bg-gold scale-125"
+                        : "bg-muted-foreground/30"
                     }`}
                   />
                 ))}
               </div>
-              <Button variant="outline" size="icon" onClick={next} className="rounded-full">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={next}
+                className="rounded-full"
+              >
                 <ChevronRight className="w-5 h-5" />
               </Button>
             </div>
 
             <div className="text-center">
-              <Button variant="gold" size="lg" className="rounded-full px-10" asChild>
-                <a href="/signup">Get Your Copy</a>
+              <Button
+                variant="gold"
+                size="lg"
+                className="rounded-full px-10"
+                asChild
+              >
+                <Link to="/signup">Get Your Copy</Link>
               </Button>
             </div>
           </div>

@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import SocialFeedSection from "@/components/SocialFeedSection";
 import FAQSection from "@/components/FAQSection";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { href: "/advertise", label: "Advertise" },
@@ -31,9 +32,20 @@ const Index = () => {
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
             {navLinks.map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-foreground transition-colors">{l.label}</a>
+              <Link
+                key={l.href}
+                to={l.href}
+                className="hover:text-foreground transition-colors"
+              >
+                {l.label}
+              </Link>
             ))}
-            <a href="/issue" className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
+            <Link
+              to="/issue"
+              className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+            >
+              Issue #01
+            </Link>
             <ThemeToggle />
           </div>
 
@@ -45,7 +57,11 @@ const Index = () => {
               className="p-2 text-foreground"
               aria-label="Toggle menu"
             >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileOpen ? (
+                <X className="w-5 h-5" />
+              ) : (
+                <Menu className="w-5 h-5" />
+              )}
             </button>
           </div>
         </div>
@@ -55,9 +71,22 @@ const Index = () => {
           <div className="md:hidden border-t border-border bg-background/95 backdrop-blur-md">
             <div className="container py-4 flex flex-col gap-4 text-sm">
               {navLinks.map((l) => (
-                <a key={l.href} href={l.href} onClick={() => setMobileOpen(false)} className="text-muted-foreground hover:text-foreground transition-colors">{l.label}</a>
+                <Link
+                  key={l.href}
+                  to={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {l.label}
+                </Link>
               ))}
-              <a href="/issue" onClick={() => setMobileOpen(false)} className="inline-flex w-fit px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors">Issue #01</a>
+              <Link
+                to="/issue"
+                onClick={() => setMobileOpen(false)}
+                className="inline-flex w-fit px-4 py-2 rounded-full bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-colors"
+              >
+                Issue #01
+              </Link>
             </div>
           </div>
         )}
@@ -73,25 +102,59 @@ const Index = () => {
       <NewsletterSection />
 
       {/* Footer */}
-      <footer id="about" className="dark py-12 bg-surface-dark text-muted-foreground scroll-mt-16">
+      <footer
+        id="about"
+        className="dark py-12 bg-surface-dark text-muted-foreground scroll-mt-16"
+      >
         <div className="container text-center space-y-5">
-          <p className="font-display font-bold text-gold text-lg">GROWTIVA AFRICA</p>
+          <p className="font-display font-bold text-gold text-lg">
+            GROWTIVA AFRICA
+          </p>
           <div className="flex items-center justify-center gap-5">
-            <a href="https://instagram.com/growtivaafrica" target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-gold transition-colors" aria-label="Instagram">
+            <a
+              href="https://instagram.com/growtivaafrica"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-gold transition-colors"
+              aria-label="Instagram"
+            >
               <Instagram className="w-5 h-5" />
             </a>
-            <a href="https://twitter.com/growtivaafrica" target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-gold transition-colors" aria-label="X / Twitter">
+            <a
+              href="https://twitter.com/growtivaafrica"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-gold transition-colors"
+              aria-label="X / Twitter"
+            >
               <Twitter className="w-5 h-5" />
             </a>
-            <a href="https://linkedin.com/company/growtivaafrica" target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-gold transition-colors" aria-label="LinkedIn">
+            <a
+              href="https://linkedin.com/company/growtivaafrica"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-gold transition-colors"
+              aria-label="LinkedIn"
+            >
               <Linkedin className="w-5 h-5" />
             </a>
-            <a href="https://facebook.com/growtivaafrica" target="_blank" rel="noopener noreferrer" className="text-foreground/50 hover:text-gold transition-colors" aria-label="Facebook">
+            <a
+              href="https://facebook.com/growtivaafrica"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground/50 hover:text-gold transition-colors"
+              aria-label="Facebook"
+            >
               <Facebook className="w-5 h-5" />
             </a>
           </div>
-          <p className="text-sm text-foreground opacity-70">A Production of Swiftpixels Creative Studios</p>
-          <p className="text-xs text-foreground opacity-50">&copy; {new Date().getFullYear()} Growtiva Africa. All rights reserved.</p>
+          <p className="text-sm text-foreground opacity-70">
+            A Production of Swiftpixels Creative Studios
+          </p>
+          <p className="text-xs text-foreground opacity-50">
+            &copy; {new Date().getFullYear()} Growtiva Africa. All rights
+            reserved.
+          </p>
         </div>
       </footer>
     </div>
