@@ -67,6 +67,7 @@ const Index = () => {
       <LatestIssueSection />
       <StatsSection />
       <TestimonialsSection />
+      <SocialFeedSection />
       <NewsletterSection />
 
       {/* Footer */}
