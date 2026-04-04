@@ -36,33 +36,7 @@ const posts = [
     handle: "@growtivaafrica",
     time: "1d ago",
   },
-  {
-    platform: "twitter" as const,
-    image: socialPost4,
-    caption: "Style is identity. Culture is power. Our fashion editorial explores how young Africans are redefining global streetwear. 🧵🌍",
-    likes: "4,563",
-    comments: "328",
-    handle: "@growtivaafrica",
-    time: "2d ago",
-  },
-  {
-    platform: "instagram" as const,
-    image: socialPost5,
-    caption: "From jollof debates to fine dining — African cuisine is taking over the world, one plate at a time. 🍛✨ #AfricanFood",
-    likes: "5,210",
-    comments: "412",
-    handle: "@growtivaafrica",
-    time: "3d ago",
-  },
-  {
-    platform: "twitter" as const,
-    image: socialPost6,
-    caption: "Community over competition. The creative studios shaping Africa's next generation of storytellers. Read more in Issue #01 📖",
-    likes: "1,744",
-    comments: "156",
-    handle: "@growtivaafrica",
-    time: "4d ago",
-  },
+];
 ];
 
 const SocialFeedSection = () => {
