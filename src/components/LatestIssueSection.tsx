@@ -130,14 +130,33 @@ const LatestIssueSection = () => {
               </Button>
             </div>
 
-            <div className="text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <Button
-                variant="gold"
                 size="lg"
-                className="rounded-full px-10"
+                className="rounded-none h-12 px-7 bg-foreground text-background hover:bg-foreground/90 font-medium tracking-wide"
                 asChild
               >
-                <Link to="/signup">Get Your Copy</Link>
+                <Link to="/issue">
+                  <BookOpen className="w-4 h-4" />
+                  Read Flipbook
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-none h-12 px-7 border-foreground text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide"
+                onClick={() => {
+                  if (LATEST_ISSUE_PDF_URL) {
+                    window.open(LATEST_ISSUE_PDF_URL, "_blank");
+                  } else {
+                    toast.error("PDF not yet available", {
+                      description: "Issue 01 launches May 2026. Subscribe to be notified.",
+                    });
+                  }
+                }}
+              >
+                <Download className="w-4 h-4" />
+                Download PDF
               </Button>
             </div>
           </div>
