@@ -7,15 +7,21 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2.5rem",
+        xl: "3rem",
+      },
       screens: {
-        "2xl": "1280px",
+        "2xl": "1320px",
       },
     },
     extend: {
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"DM Sans"', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
