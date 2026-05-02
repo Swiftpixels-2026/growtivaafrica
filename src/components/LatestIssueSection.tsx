@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, BookOpen } from "lucide-react";
+import { ChevronLeft, ChevronRight, BookOpen, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useScrollAnimate } from "@/hooks/use-scroll-animate";
+import { toast } from "sonner";
 
 import spread1 from "@/assets/issue-spread-1.jpg";
 import spread2 from "@/assets/issue-spread-2.jpg";
@@ -9,6 +10,9 @@ import spread3 from "@/assets/issue-spread-3.jpg";
 import { Link } from "react-router-dom";
 
 const spreads = [spread1, spread2, spread3];
+
+// Latest issue PDF — set to a real URL when uploaded.
+const LATEST_ISSUE_PDF_URL: string | null = null;
 
 const tocItems = [
   { page: "04", title: "Editor's Note", subtitle: "A letter from the team" },
@@ -64,21 +68,18 @@ const LatestIssueSection = () => {
       <div className="container">
         <div
           ref={headingRef}
-          className={`text-center max-w-2xl mx-auto mb-16 space-y-4 transition-all duration-700 ease-out ${headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`max-w-3xl mb-16 space-y-5 transition-all duration-700 ease-out ${headingVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
         >
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary text-primary-foreground text-sm font-medium mb-2">
-            <BookOpen className="w-4 h-4" />
-            <span>Issue #01 — Premier Edition</span>
-          </div>
-          <p className="text-sm font-medium text-muted-foreground">
-            Coming May 1st, 2026
-          </p>
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Peek Inside the <span className="text-gold">Latest Issue</span>
+          <p className="eyebrow">Latest Issue</p>
+          <h2 className="font-display font-medium text-[clamp(2rem,5vw,3.75rem)] leading-[1.05] tracking-tight">
+            Issue 01 — <span className="italic text-gold">The Builders Edition</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Explore what's waiting for you in the debut issue of Growtiva
-            Africa.
+          <p className="text-foreground/75 text-base lg:text-lg leading-relaxed max-w-2xl">
+            A curated collection of stories, insights, and perspectives from
+            Africans building across industries, cities, and cultures.
+          </p>
+          <p className="text-muted-foreground text-sm">
+            Featuring founders, operators, and creatives shaping what's next.
           </p>
         </div>
 
@@ -129,14 +130,33 @@ const LatestIssueSection = () => {
               </Button>
             </div>
 
-            <div className="text-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <Button
-                variant="gold"
                 size="lg"
-                className="rounded-full px-10"
+                className="rounded-none h-12 px-7 bg-foreground text-background hover:bg-foreground/90 font-medium tracking-wide"
                 asChild
               >
-                <Link to="/signup">Get Your Copy</Link>
+                <Link to="/issue">
+                  <BookOpen className="w-4 h-4" />
+                  Read Flipbook
+                </Link>
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                className="rounded-none h-12 px-7 border-foreground text-foreground hover:bg-foreground hover:text-background font-medium tracking-wide"
+                onClick={() => {
+                  if (LATEST_ISSUE_PDF_URL) {
+                    window.open(LATEST_ISSUE_PDF_URL, "_blank");
+                  } else {
+                    toast.error("PDF not yet available", {
+                      description: "Issue 01 launches May 2026. Subscribe to be notified.",
+                    });
+                  }
+                }}
+              >
+                <Download className="w-4 h-4" />
+                Download PDF
               </Button>
             </div>
           </div>

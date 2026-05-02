@@ -7,15 +7,21 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "1.5rem",
+      padding: {
+        DEFAULT: "1rem",
+        sm: "1.5rem",
+        lg: "2.5rem",
+        xl: "3rem",
+      },
       screens: {
-        "2xl": "1280px",
+        "2xl": "1320px",
       },
     },
     extend: {
       fontFamily: {
-        display: ['"Space Grotesk"', 'sans-serif'],
-        body: ['"DM Sans"', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
+        body: ['"Inter"', 'system-ui', 'sans-serif'],
+        serif: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -89,12 +95,22 @@ export default {
           "0%, 100%": { transform: "translateY(0px) rotate(-3deg)" },
           "50%": { transform: "translateY(-15px) rotate(-3deg)" },
         },
+        "ken-burns": {
+          "0%": { transform: "scale(1.05) translate3d(0,0,0)" },
+          "100%": { transform: "scale(1.18) translate3d(-2%, -1%, 0)" },
+        },
+        "fade-in": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.7s ease-out forwards",
-        "float": "float 4s ease-in-out infinite",
+        "float": "float 6s ease-in-out infinite",
+        "ken-burns": "ken-burns 8s ease-out forwards",
+        "fade-in": "fade-in 1.2s ease-out forwards",
       },
     },
   },
