@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft, Share2 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
+import { toast } from "sonner";
+import { ISSUES } from "@/components/AllIssuesSection";
 
 import spread1 from "@/assets/issue-spread-1.jpg";
 import spread2 from "@/assets/issue-spread-2.jpg";
@@ -22,10 +24,27 @@ const tocItems = [
 ];
 
 const Issue = () => {
+  const { slug } = useParams();
+  const issue = slug ? ISSUES.find((i) => i.slug === slug) : ISSUES[0];
   const [currentSpread, setCurrentSpread] = useState(0);
+
+  if (slug && !issue) return <Navigate to="/issues/issue-01" replace />;
+  const meta = issue ?? ISSUES[0];
 
   const prev = () => setCurrentSpread((s) => (s === 0 ? spreads.length - 1 : s - 1));
   const next = () => setCurrentSpread((s) => (s === spreads.length - 1 ? 0 : s + 1));
+
+  const share = async () => {
+    const url = `${window.location.origin}/issues/${meta.slug}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `Growtiva Africa — Issue ${meta.number}`, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        toast.success("Link copied to clipboard");
+      }
+    } catch { /* cancelled */ }
+  };
 
   return (
     <div className="min-h-screen bg-background">
