@@ -12,6 +12,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/Admin";
+import Directory from "./pages/Directory";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,8 @@ const App = () => (
         <Routes>
           <Route path="/signup" element={<SignUp />} />
           <Route path="/issue" element={<Issue />} />
+          <Route path="/issues/:slug" element={<Issue />} />
+          <Route path="/directory" element={<Directory />} />
           <Route path="/about" element={<About />} />
           <Route path="/advertise" element={<Advertise />} />
           <Route path="/contact" element={<Contact />} />

@@ -4,14 +4,14 @@ import ThemeToggle from "@/components/ThemeToggle";
 import HeroSection from "@/components/HeroSection";
 import CategoriesSection from "@/components/CategoriesSection";
 import LatestIssueSection from "@/components/LatestIssueSection";
-import StatsSection from "@/components/StatsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import AllIssuesSection from "@/components/AllIssuesSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import SocialFeedSection from "@/components/SocialFeedSection";
 import FAQSection from "@/components/FAQSection";
 import { Link } from "react-router-dom";
 
 const navLinks = [
+  { href: "/directory", label: "Directory" },
   { href: "/advertise", label: "Advertise" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
@@ -93,10 +93,9 @@ const Index = () => {
       </nav>
 
       <HeroSection />
-      <CategoriesSection />
       <LatestIssueSection />
-      <StatsSection />
-      <TestimonialsSection />
+      <AllIssuesSection />
+      <CategoriesSection />
       <SocialFeedSection />
       <FAQSection />
       <NewsletterSection />
