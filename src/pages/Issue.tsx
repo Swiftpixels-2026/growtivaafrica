@@ -55,10 +55,13 @@ const Issue = () => {
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span className="font-display font-bold text-sm tracking-tight">
-              GROWTIVA <span className="text-gold">AFRICA</span> — Issue #01
+              GROWTIVA <span className="text-gold">AFRICA</span> — Issue #{meta.number}
             </span>
+            <Button variant="ghost" size="icon" onClick={share} aria-label="Share">
+              <Share2 className="w-4 h-4" />
+            </Button>
             <ThemeToggle />
           </div>
         </div>
@@ -66,10 +69,11 @@ const Issue = () => {
 
       <div className="container py-12 max-w-6xl">
         <div className="text-center mb-10 space-y-2">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Issue #01 — <span className="text-gold">Premier Edition</span>
+          <p className="eyebrow">Issue {meta.number} · {meta.date}</p>
+          <h1 className="font-display text-3xl md:text-5xl tracking-tight">
+            <span className="italic text-gold">{meta.title}</span>
           </h1>
-          <p className="text-muted-foreground text-lg">Read the debut issue of Growtiva Africa online.</p>
+          <p className="text-muted-foreground text-lg">Read it online — flip through every spread.</p>
         </div>
 
         {/* Flipbook viewer */}
