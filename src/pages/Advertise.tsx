@@ -90,26 +90,50 @@ const Advertise = () => {
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label>Budget *</Label>
-                  <Select name="budget" required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select budget" />
-                    </SelectTrigger>
+                  <Label>Page Type *</Label>
+                  <Select name="page_type" required>
+                    <SelectTrigger><SelectValue placeholder="Select page type" /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="half-page">Half Page — ₦50,000</SelectItem>
-                      <SelectItem value="full-page">Full Page — ₦100,000</SelectItem>
+                      <SelectItem value="half-page">Half Page</SelectItem>
+                      <SelectItem value="full-page">Full Page</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
+                  <Label>Budget *</Label>
+                  <Select name="budget" required>
+                    <SelectTrigger><SelectValue placeholder="Select budget" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="half-page-ngn">Half Page — ₦75,000</SelectItem>
+                      <SelectItem value="half-page-usd">Half Page — $80</SelectItem>
+                      <SelectItem value="full-page-ngn">Full Page — ₦150,000</SelectItem>
+                      <SelectItem value="full-page-usd">Full Page — $120</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
                   <Label>Want a hard copy? *</Label>
                   <Select name="want_hard_copy" required>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select" />
-                    </SelectTrigger>
+                    <SelectTrigger><SelectValue placeholder="Select" /></SelectTrigger>
                     <SelectContent>
                       <SelectItem value="yes">Yes</SelectItem>
                       <SelectItem value="no">No</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>Hard Copies Requested</Label>
+                  <Select name="hard_copy_quantity">
+                    <SelectTrigger><SelectValue placeholder="Select quantity" /></SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="0">None</SelectItem>
+                      <SelectItem value="1-5">1 – 5</SelectItem>
+                      <SelectItem value="6-20">6 – 20</SelectItem>
+                      <SelectItem value="21-50">21 – 50</SelectItem>
+                      <SelectItem value="50+">50+</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>

@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, ArrowLeft } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowLeft, Share2 } from "lucide-react";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useParams, Navigate } from "react-router-dom";
+import { toast } from "sonner";
+import { ISSUES } from "@/components/AllIssuesSection";
 
 import spread1 from "@/assets/issue-spread-1.jpg";
 import spread2 from "@/assets/issue-spread-2.jpg";
@@ -22,10 +24,27 @@ const tocItems = [
 ];
 
 const Issue = () => {
+  const { slug } = useParams();
+  const issue = slug ? ISSUES.find((i) => i.slug === slug) : ISSUES[0];
   const [currentSpread, setCurrentSpread] = useState(0);
+
+  if (slug && !issue) return <Navigate to="/issues/issue-01" replace />;
+  const meta = issue ?? ISSUES[0];
 
   const prev = () => setCurrentSpread((s) => (s === 0 ? spreads.length - 1 : s - 1));
   const next = () => setCurrentSpread((s) => (s === spreads.length - 1 ? 0 : s + 1));
+
+  const share = async () => {
+    const url = `${window.location.origin}/issues/${meta.slug}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: `Growtiva Africa — Issue ${meta.number}`, url });
+      } else {
+        await navigator.clipboard.writeText(url);
+        toast.success("Link copied to clipboard");
+      }
+    } catch { /* cancelled */ }
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -36,10 +55,13 @@ const Issue = () => {
             <ArrowLeft className="w-4 h-4" />
             Back to Home
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span className="font-display font-bold text-sm tracking-tight">
-              GROWTIVA <span className="text-gold">AFRICA</span> — Issue #01
+              GROWTIVA <span className="text-gold">AFRICA</span> — Issue #{meta.number}
             </span>
+            <Button variant="ghost" size="icon" onClick={share} aria-label="Share">
+              <Share2 className="w-4 h-4" />
+            </Button>
             <ThemeToggle />
           </div>
         </div>
@@ -47,10 +69,11 @@ const Issue = () => {
 
       <div className="container py-12 max-w-6xl">
         <div className="text-center mb-10 space-y-2">
-          <h1 className="text-3xl md:text-5xl font-bold tracking-tight">
-            Issue #01 — <span className="text-gold">Premier Edition</span>
+          <p className="eyebrow">Issue {meta.number} · {meta.date}</p>
+          <h1 className="font-display text-3xl md:text-5xl tracking-tight">
+            <span className="italic text-gold">{meta.title}</span>
           </h1>
-          <p className="text-muted-foreground text-lg">Read the debut issue of Growtiva Africa online.</p>
+          <p className="text-muted-foreground text-lg">Read it online — flip through every spread.</p>
         </div>
 
         {/* Flipbook viewer */}
