@@ -54,7 +54,7 @@ const HeroSection = () => {
             <h1 className="font-display font-medium text-foreground tracking-tight leading-[0.95] text-[clamp(2.75rem,7vw,6rem)]">
               Growtiva
               <br />
-              <span className="italic text-gold">Africa.</span>
+              <span className="italic text-teal">Africa.</span>
             </h1>
 
             <p className="max-w-xl text-foreground/80 text-base lg:text-lg leading-relaxed">
@@ -65,7 +65,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Button
                 size="lg"
-                className="rounded-none h-12 px-7 bg-foreground text-background hover:bg-foreground/90 font-medium tracking-wide"
+                className="rounded-md h-12 px-7 bg-emerald hover:bg-emerald-dark text-white font-medium tracking-wide shadow-md"
                 onClick={() =>
                   document
                     .getElementById("latest-issue")
