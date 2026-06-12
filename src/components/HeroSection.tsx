@@ -54,7 +54,7 @@ const HeroSection = () => {
             <h1 className="font-display font-medium text-foreground tracking-tight leading-[0.95] text-[clamp(2.75rem,7vw,6rem)]">
               Growtiva
               <br />
-              <span className="italic text-gold">Africa.</span>
+              <span className="italic text-teal">Africa.</span>
             </h1>
 
             <p className="max-w-xl text-foreground/80 text-base lg:text-lg leading-relaxed">
