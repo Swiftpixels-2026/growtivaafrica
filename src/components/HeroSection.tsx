@@ -65,7 +65,7 @@ const HeroSection = () => {
             <div className="flex flex-wrap items-center gap-4 pt-2">
               <Button
                 size="lg"
-                className="rounded-none h-12 px-7 bg-foreground text-background hover:bg-foreground/90 font-medium tracking-wide"
+                className="rounded-md h-12 px-7 bg-emerald hover:bg-emerald-dark text-white font-medium tracking-wide shadow-md"
                 onClick={() =>
                   document
                     .getElementById("latest-issue")
