@@ -25,8 +25,8 @@ const Index = () => {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
         <div className="container flex items-center justify-between h-16">
-          <span className="font-display font-bold text-xl tracking-tight">
-            GROWTIVA <span className="text-gold">AFRICA</span>
+          <span className="font-display font-bold text-xl tracking-tight text-teal">
+            GROWTIVA <span className="text-emerald">AFRICA</span>
           </span>
 
           {/* Desktop */}
